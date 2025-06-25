@@ -5,6 +5,7 @@ import config.ConfigurationManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import lombok.Getter;
 
 import java.util.Map;
 
@@ -14,8 +15,11 @@ public class ReqResSpec {
 
     private static final Configuration configuration = ConfigurationManager.getConfig();
 
-    public static RequestSpecification getRequestSpec() {
-        return new RequestSpecBuilder()
+    @Getter
+    private static final RequestSpecification requestSpec;
+
+    static {
+        requestSpec = new RequestSpecBuilder()
             .setBaseUri(configuration.baseUrl())
             .addHeaders(
                 Map.ofEntries(
