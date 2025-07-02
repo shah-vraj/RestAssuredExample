@@ -1,6 +1,7 @@
 package stepdef;
 
 import api.UserApi;
+import api.manager.ApiManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,8 +21,8 @@ public class UserSteps {
     private final UserApi userApi;
     private Response response;
 
-    public UserSteps(UserApi userApi) {
-        this.userApi = userApi;
+    public UserSteps(ApiManager apiManager) {
+        this.userApi = apiManager.getUserApi();
     }
 
     @When("I send a GET request to fetch user with id {int}")

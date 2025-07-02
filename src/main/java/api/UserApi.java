@@ -6,7 +6,7 @@ import model.CreateUserModel;
 import spec.ReqResSpec;
 import util.ApiEndpoints;
 
-public class UserApi {
+public class UserApi implements Api {
 
     public Response getUser(int id) {
         return RestAssured.given(ReqResSpec.getRequestSpec())
